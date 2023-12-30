@@ -28,7 +28,7 @@ withDefaults(defineProps<{
 });
 
 
-const messages = [
+const messages: InstanceType<typeof Message>["$props"][] = [
   {
     author: 'InFidel Castro (i miss my wife)',
     avatar: "https://cdn.discordapp.com/avatars/569277281046888488/f25fecc49cc44f7dfb11afe72ae074aa.png?size=80",
@@ -78,7 +78,7 @@ const messages = [
   {
     author: 'Chatsum',
     ephemeral: true,
-    ephemeralTarget: 'Geauser',
+    ephemeralUser: 'Geauser',
     commandUsed: '/summarize',
     bot: true,
     waitingCommand: false,
@@ -111,7 +111,7 @@ const messages = [
         :date="message.date"
         :bot="message.bot"
         :ephemeral="message.ephemeral"
-        :ephemeral-user="message.ephemeralTarget"
+        :ephemeral-user="message.ephemeralUser"
         :ephemeral-user-avatar="message.ephemeralUserAvatar"
         :command-used="message.commandUsed"
         :mention="message.mention"
