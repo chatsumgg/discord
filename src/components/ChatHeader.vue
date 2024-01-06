@@ -5,11 +5,15 @@ import UnreadCount from "@/components/UnreadCount.vue";
 
 withDefaults(defineProps<{
   type?: 'channel' | 'dm',
+  bot?: boolean,
+  mobile?: boolean,
   name: string,
   restricted?: boolean,
   avatar?: string,
   unreadCount?: number,
 }>(), {
+  bot: false,
+  mobile: false,
   unreadCount: 0,
   type: 'channel',
 });
@@ -22,8 +26,9 @@ withDefaults(defineProps<{
     class="
       relative
       flex items-center flex-col
-      bg-[#313338]
-      h-[48px] after:h-px after:w-full after:bg-[#26282c]">
+      shadow-sm shadow-black/20
+      bg-white dark:bg-[#313338]"
+    :class="[mobile ? 'h-[60px]' : 'h-[48px]']">
 
     <div class="flex justify-between w-full h-full p-2">
 
@@ -58,8 +63,15 @@ withDefaults(defineProps<{
           v-else
           class="ml-2 mr-3" size="sm" :img="avatar!" />
 
-        <span class="text-white font-discord font-semibold antialiased-none leading-5">
+        <span class="font-discord font-semibold antialiased-none leading-5 dark:text-white text-[#060607]">
           {{ name }}
+        </span>
+
+        <span
+          v-if="bot"
+          class="ml-2 inline-flex items-center text-white text-[10px] leading-[15px] px-1 rounded-sm bg-[#5765f2]">
+          <svg class="-ml-1" aria-hidden="false" role="img" width="16" height="16" fill="none" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M18.7 7.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4l3.3 3.29 7.3-7.3a1 1 0 0 1 1.4 0Z" clip-rule="evenodd" class=""></path></svg>
+          BOT
         </span>
 
       </div>
@@ -70,7 +82,7 @@ withDefaults(defineProps<{
         class="inline-flex items-center justify-center w-10 h-full">
 
         <svg
-          class="w-6 h-6 text-[#b5b9c1]"
+          class="w-6 h-6 dark:text-[#b5b9c1] text-[#4e4f58]"
           x="0" y="0"
           aria-hidden="true"
           role="img"
@@ -96,6 +108,6 @@ withDefaults(defineProps<{
 
 <style scoped>
 .chan-icon {
-  @apply h-6 w-6 mx-2 text-[#80848e];
+  @apply h-6 w-6 mx-2 dark:text-[#80848e] text-[#4e4f58];
 }
 </style>

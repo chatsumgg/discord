@@ -12,7 +12,7 @@ const props = withDefaults(defineProps<{
 
 const statusClass = ({
   'online':    'bg-[#43b581]',
-  'offline':   'border-[2px] border-[#80848e] bg-[#232429]',
+  'offline':   'border-[2px] dark:border-[#80848e] border-white bg-[#232429]',
   'invisible': 'bg-[#747f8d]',
 })[props.status];
 
@@ -28,7 +28,7 @@ const statusClass = ({
     <div
       class="
         absolute bottom-0 right-0
-        rounded-full outline outline-[#232429]"
+        rounded-full outline dark:outline-[#232429] outline-white"
       :class="[
         size === 'sm' ? 'w-[8px] h-[8px]' : 'w-[10px] h-[10px]',
         statusClass

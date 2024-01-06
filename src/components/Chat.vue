@@ -18,10 +18,14 @@ withDefaults(defineProps<{
     name: string,
     description?: string,
   },
+  mobile?: boolean,
   hideCommand?: boolean,
   name: string,
   avatar?: string,
+  bot?: boolean,
 }>(), {
+  mobile: false,
+  bot: false,
   unreadCount: 0,
   inputContent: '',
   type: 'channel',
@@ -35,9 +39,11 @@ withDefaults(defineProps<{
   <div class="flex flex-col">
 
     <ChatHeader
+      :bot="bot"
       :type="type"
       :name="name"
       :avatar="avatar"
+      :mobile="mobile"
       :unread-count="unreadCount"
       :restricted="restricted" />
 
@@ -59,9 +65,11 @@ withDefaults(defineProps<{
         :content="message.content">
       </Message>
 
+      <slot />
+
     </div>
 
-    <footer class="flex w-full h-[68px] bg-[#313338]">
+    <footer class="flex w-full h-[68px]">
 
       <div class="relative w-full flex-1 px-4">
 

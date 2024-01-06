@@ -13,7 +13,8 @@ withDefaults(defineProps<{
 
 <template>
 
-  <section class="relative inline-flex flex-col rounded-lg overflow-hidden">
+  <section
+    class="discord relative inline-flex flex-col rounded-lg overflow-hidden">
 
     <!-- Window controls -->
     <header
@@ -25,13 +26,18 @@ withDefaults(defineProps<{
     </header>
 
     <!-- Window body -->
-    <div class="flex h-full bg-[#313338]">
+    <div
+      class="flex h-full dark:bg-[#313338] bg-white">
       <slot />
     </div>
 
   </section>
 
 </template>
+
+<style>
+.discord * { @apply !subpixel-antialiased }
+</style>
 
 <style scoped lang="scss">
 
@@ -59,13 +65,5 @@ $macos-maximize-btn-color: #28c840;
 
 }
 
-
-</style>
-
-<style>
-
-html {
-  @apply bg-black;
-}
 
 </style>
