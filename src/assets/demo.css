@@ -1,0 +1,6 @@
+
+@tailwind base;
+
+* {
+  @apply subpixel-antialiased;
+}
